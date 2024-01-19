@@ -1,8 +1,14 @@
 /********** Template CSS **********/
 :root {
+    /**
     --primary: #32C36C;
     --light: #F6F7F8;
     --dark: #1A2A36;
+    **/
+    --primary: #007F80;
+    --light: #FFC800;
+    --dark: #1A2A36;
+
 }
 
 .fw-medium {
@@ -49,22 +55,26 @@
 
 .btn.btn-primary,
 .btn.btn-outline-primary:hover {
-    color: #FFFFFF;
+    color: #007F80;
+    background-color: #00cccc;
 }
 
 .btn-square {
     width: 38px;
     height: 38px;
+    color: #007F80;
 }
 
 .btn-sm-square {
     width: 32px;
     height: 32px;
+    color: #007F80;
 }
 
 .btn-lg-square {
     width: 48px;
     height: 48px;
+    color: #007F80;
 }
 
 .btn-square,
@@ -83,15 +93,25 @@
     transition: .5s;
 }
 
+.navbar-brand img{
+width: 85px;
+height: 85px;
+object-fit: contain;
+
+}
+
 .navbar .navbar-brand,
 .navbar a.btn {
     height: 75px;
+
 }
+
+
 
 .navbar .navbar-nav .nav-link {
     margin-right: 30px;
     padding: 25px 0;
-    color: var(--dark);
+    color: var(--light);
     font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
@@ -299,7 +319,7 @@
 #portfolio-flters li {
     display: inline-block;
     font-weight: 500;
-    color: var(--dark);
+    color: var(--light);
     cursor: pointer;
     transition: .5s;
     border-bottom: 2px solid transparent;
@@ -322,7 +342,7 @@
     width: 0;
     height: 100%;
     top: 0;
-    background: var(--dark);
+    background: var(--light);
     transition: .5s;
 }
 
@@ -472,7 +492,7 @@
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
 .testimonial-carousel .owl-nav .owl-next:hover {
-    color: var(--dark);
+    color: var(--light);
 }
 
 .testimonial-carousel .testimonial-img img {
