@@ -56,7 +56,7 @@
 .btn.btn-primary,
 .btn.btn-outline-primary:hover {
     color: #007F80;
-    background-color: #00cccc;
+    background-color: #84E1D0;
 }
 
 .btn-square {
@@ -69,12 +69,15 @@
     width: 32px;
     height: 32px;
     color: #007F80;
+    
 }
 
 .btn-lg-square {
     width: 48px;
     height: 48px;
     color: #007F80;
+    border: 4px solid #007F80;
+    background-color: #84E1D0;
 }
 
 .btn-square,
@@ -85,6 +88,7 @@
     align-items: center;
     justify-content: center;
     font-weight: normal;
+    
 }
 
 /*** Navbar ***/
@@ -292,6 +296,8 @@ object-fit: contain;
 
 
 /*** Feature ***/
+
+
 @media (min-width: 992px) {
     .container.feature {
         max-width: 100% !important;
