@@ -277,7 +277,9 @@
                             </div>
                             <h4 class="mb-3">Habitacional</h4>
                             <p>01 1A 1B 1C 1D 1E 1F DAC</p>
+                           <!--Quitamos el link de read more 
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                           -->
                         </div>
                     </div>
                 </div>
@@ -292,7 +294,9 @@
                             </div>
                             <h4 class="mb-3">Comercial</h4>
                             <p>PDBT APBT</p>
+                            <!--Quitamos el link de read more
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -307,7 +311,9 @@
                             </div>
                             <h4 class="mb-3">Industrial</h4>
                             <p>GDMTO GDMTH</p>
+                            <!--Quitamos el link de read more
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -322,7 +328,9 @@
                             </div>
                             <h4 class="mb-3">PPA</h4>
                             <p>Ahorro sin Inversión</p>
+                            <!--Quitamos el link de read more
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -337,7 +345,9 @@
                             </div>
                             <h4 class="mb-3">Agro</h4>
                             <p></p>
+                            <!--Quitamos el link de read more
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -352,7 +362,9 @@
                             </div>
                             <h4 class="mb-3">Aislado e Híbrido</h4>
                             <p>Donde no te llegue el servicio de luz, generamos tu energía. Sistema con Baterías, Respalda tu energía.</p>
+                            <!--Quitamos el link de read more
                             <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -576,34 +588,71 @@
                         <h6 class="text-primary">Consulta</h6>
                         <h1 class="mb-4">Obten una consulta</h1>
                         <p class="mb-4 pb-2">Dejanos tus datos para poder contactarte y darte una cotización para tu empresa, casa habitacional , agronegocio.</p>
-                        <form action="https://formsubmit.co/leeetit@gmail.com" method="POST">
+                        <form id="contactForm" action="https://formsubmit.co/leeetit@gmail.com" method="POST">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Tu Nombre" style="height: 55px;">
+                                    <input id="nameInput" type="text" class="form-control border-0" placeholder="Tu Nombre" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Tu Correo" style="height: 55px;">
+                                    <input id="emailInput" type="email" class="form-control border-0" placeholder="Tu Correo" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Tu Telefono" style="height: 55px;">
+                                    <input id="phoneInput" type="text" class="form-control border-0" placeholder="Tu Telefono" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
+                                    <select id="serviceInput" class="form-select border-0" style="height: 55px;">
                                         <option selected>Selecciona tu servicio</option>
-                                        <option value="1">Casa Habitacional</option>
-                                        <option value="2">Industrial</option>
-                                        <option value="3">Agronegocio</option>
+                                        <option value="Casa Habitacional">Casa Habitacional</option>
+                                        <option value="Industrial">Industrial</option>
+                                        <option value="Agronegocio">Agronegocio</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Comentarios"></textarea>
+                                    <textarea id="commentsInput" class="form-control border-0" placeholder="Comentarios"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Submit</button>
+                                    <button id="submitButton" class="btn btn-primary rounded-pill py-3 px-5" type="submit">Enviar</button>
                                 </div>
                             </div>
                         </form>
                     </div>
+                    <script>
+                        document.getElementById('submitButton').addEventListener('click', function() {
+                            event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+                            var name = document.getElementById('nameInput').value;
+                            var email = document.getElementById('emailInput').value;
+                            var phone = document.getElementById('phoneInput').value;
+                            var service = document.getElementById('serviceInput').value;
+                            var comments = document.getElementById('commentsInput').value;
+                    
+                            if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || service === 'Selecciona tu servicio') {
+                                alert('Por favor completa todos los campos requeridos');
+                                return;
+                            }
+                    
+                            var formData = new FormData();
+                            formData.append('name', name);
+                            formData.append('email', email);
+                            formData.append('phone', phone);
+                            formData.append('service', service);
+                            formData.append('comments', comments);
+                    
+                            fetch('https://formsubmit.co/ajax/leeetit@gmail.com', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert('Correo enviado con éxito');
+                                } else {
+                                    alert('Hubo un problema al enviar el correo');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
@@ -743,16 +792,16 @@
                     <div class="d-flex pt-2">
                         <!--
                         <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a> -->
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="https://www.facebook.com/people/SunBrokers/100083285185265/?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="https://wa.me/523331679854"><i class="fab fa-whatsapp"></i></a>
+                        <a class="btn btn-square btn-outline-light btn-social" href="https://www.instagram.com/sunbrokersmx/?utm_source=qr&igsh=eXlwYWV0d2lxZ2p0"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-white mb-4">Links</h5>
-                    <a class="btn btn-link" href="">Acerca de Nosotros</a>
-                    <a class="btn btn-link" href="">Contactanos</a>
-                    <a class="btn btn-link" href="">Nuestros Servicios</a>
+                    <a class="btn btn-link" href="about.html">Acerca de Nosotros</a>
+                    <a class="btn btn-link" href="contact.html">Contactanos</a>
+                    <a class="btn btn-link" href="service.html">Nuestros Servicios</a>
                     <!--Quitamos estas pestañas
                     <a class="btn btn-link" href="">Terms & Condition</a>
                     <a class="btn btn-link" href="">Support</a>
@@ -785,10 +834,41 @@
                     <h5 class="text-white mb-4">Contacto</h5>
                     <p>Dejanos tu correo para contactarte.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu correo">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Envio</button>
+                        <input id="emailInput" class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Tu correo">
+                        <button id="submitButton" type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Envio</button>
                     </div>
                 </div>
+
+                <script>
+                    document.getElementById('submitButton').addEventListener('click', function() {
+                        var email = document.getElementById('emailInput').value;
+                        var title = "Nuevo Prospecto/Cliente Nuevo";
+                        var description = "Nuevo cliente que esta interesado y nos deja su correo.";
+                        if (email.trim() !== '') {
+                            var formData = new FormData();
+                            formData.append('email', email);
+                            formData.append('title', title);
+                            formData.append('description', description);
+                
+                            fetch('https://formsubmit.co/ajax/leeetit@gmail.com', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert('Correo enviado con éxito');
+                                } else {
+                                    alert('Hubo un problema al enviar el correo');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                        } else {
+                            alert('Por favor ingresa tu correo electrónico');
+                        }
+                    });
+                </script>
             </div>
         </div>
         <div class="container">
